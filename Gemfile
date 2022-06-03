@@ -7,6 +7,8 @@ ruby '2.6.3'
 gem 'rails', '~> 6.1.6'
 # Used for creating custom CSS
 gem 'bootstrap-sass', '3.4.1'
+# Use hashing the password with bcrypt
+gem 'bcrypt', '3.1.13'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
