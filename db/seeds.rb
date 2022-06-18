@@ -1,3 +1,27 @@
+# Create a main sample user. 
+# The create! method is just like the create method, 
+# except it raises an exception for an invalid user
+User.create!(name: "Example User",               # Tthis is the first user
+            email: "example@railstutorial.org",
+            password: "foobar",
+            password_confirmation: "foobar",
+            admin: true)                         # he is admin
+
+# Generate a bunch of additional users.
+99.times do |n|
+  name = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name: name,
+              email: email,
+              password: password,
+              password_confirmation: password)
+end
+
+# command to fill db by users:
+# $ rails db:migrate:reset
+# $ rails db:seed
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #

@@ -15,11 +15,11 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX }, # set special format
     uniqueness: {case_sensitive: false } # email is unique vith no matter upcase or lowcase
   
-  has_secure_password # hashing the password with bcrypt (gemfile)
-  
+  has_secure_password # hashing the password with bcrypt (gemfile) / catch nil password
   validates :password, 
     presence: true, 
-    length: { minimum: 6 }
+    length: { minimum: 6 },
+    allow_nil: true # for testing (has_secure_password catch nil)
   
   # Returns the hash digest of the given string.
   def User.digest(string)
