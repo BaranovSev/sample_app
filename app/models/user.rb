@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token # non DB attribute of User class
 
   before_save { self.email = email.downcase } # Active Record Callback 
@@ -50,4 +51,12 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Micropost.where("user_id = ?", id) # user_id = ? prevents SQL injection
+  end
+
+  #private
 end

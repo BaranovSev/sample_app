@@ -1,4 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Using tabulation in fixtures is important
+# correct:                 incorrect:
+#   param: value           param: value
+
 michael:
   name: Michael Example
   email: michael@example.com
