@@ -25,6 +25,14 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+# Create following relationships.
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) } # user.follow
+followers.each { |follower| follower.follow(user) } # follower.follow
+
 # command to fill db by users and their posts:
 # $ rails db:migrate:reset
 # $ rails db:seed
